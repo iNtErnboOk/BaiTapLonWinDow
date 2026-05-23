@@ -1,0 +1,41 @@
+D:\C#\NEW BTL\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe.config
+D:\C#\NEW BTL\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe
+D:\C#\NEW BTL\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.pdb
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.AssemblyReference.cache
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Form1.resources
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Properties.Resources.resources
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.GenerateResource.cache
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.CoreCompileInputs.cache
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.pdb
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_Sach.resources
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_DocGia.resources
+D:\C#\NEW BTL\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_MuonSach.resources
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe.config
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.pdb
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.AssemblyReference.cache
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Form1.resources
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Properties.Resources.resources
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_DocGia.resources
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_MuonSach.resources
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_Sach.resources
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_TraSach.resources
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.GenerateResource.cache
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.CoreCompileInputs.cache
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe
+C:\Users\VU VAN MINH\Downloads\Bài Tập lớn Window-20260523T075625Z-3-001\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.pdb
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe.config
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.pdb
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.AssemblyReference.cache
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Form1.resources
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Properties.Resources.resources
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_DocGia.resources
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_MuonSach.resources
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_Sach.resources
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_TraSach.resources
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.GenerateResource.cache
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.CoreCompileInputs.cache
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.pdb
