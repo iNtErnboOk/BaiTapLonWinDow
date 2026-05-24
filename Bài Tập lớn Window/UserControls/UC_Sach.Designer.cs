@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnThem = new System.Windows.Forms.Button();
@@ -73,6 +73,7 @@
             this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.bt_XoaTrang = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -98,6 +99,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.bt_XoaTrang);
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel4);
             this.splitContainer1.Panel1.Controls.Add(this.btnXoaAnh);
             this.splitContainer1.Panel1.Controls.Add(this.btnChonAnh);
@@ -399,7 +401,7 @@
             "Lịch sử - Địa lý",
             "Tạp chí - Báo cáo khoa học",
             "Khác..."});
-            this.cboTheLoai.Location = new System.Drawing.Point(125, 262);
+            this.cboTheLoai.Location = new System.Drawing.Point(125, 258);
             this.cboTheLoai.Margin = new System.Windows.Forms.Padding(4);
             this.cboTheLoai.Name = "cboTheLoai";
             this.cboTheLoai.Size = new System.Drawing.Size(199, 28);
@@ -526,7 +528,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.7767F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.2233F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.tableLayoutPanel2.Controls.Add(this.txtTimKiem, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.cboLocTheLoai, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.cboLocTrangThai, 2, 0);
@@ -546,7 +548,7 @@
             this.txtTimKiem.Location = new System.Drawing.Point(4, 19);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(374, 26);
+            this.txtTimKiem.Size = new System.Drawing.Size(373, 26);
             this.txtTimKiem.TabIndex = 0;
             // 
             // cboLocTheLoai
@@ -572,7 +574,7 @@
             "Lịch sử - Địa lý",
             "Tạp chí - Báo cáo khoa học",
             "Khác..."});
-            this.cboLocTheLoai.Location = new System.Drawing.Point(386, 17);
+            this.cboLocTheLoai.Location = new System.Drawing.Point(385, 17);
             this.cboLocTheLoai.Margin = new System.Windows.Forms.Padding(4);
             this.cboLocTheLoai.Name = "cboLocTheLoai";
             this.cboLocTheLoai.Size = new System.Drawing.Size(238, 28);
@@ -588,7 +590,7 @@
             "-- Chọn trạng thái --",
             "Còn sách",
             "Hết sách"});
-            this.cboLocTrangThai.Location = new System.Drawing.Point(632, 17);
+            this.cboLocTrangThai.Location = new System.Drawing.Point(631, 17);
             this.cboLocTrangThai.Margin = new System.Windows.Forms.Padding(4);
             this.cboLocTrangThai.Name = "cboLocTrangThai";
             this.cboLocTrangThai.Size = new System.Drawing.Size(229, 28);
@@ -601,10 +603,10 @@
             this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.Location = new System.Drawing.Point(869, 4);
+            this.btnTimKiem.Location = new System.Drawing.Point(868, 4);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(124, 41);
+            this.btnTimKiem.Size = new System.Drawing.Size(125, 41);
             this.btnTimKiem.TabIndex = 3;
             this.btnTimKiem.Text = "Tìm Kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
@@ -628,14 +630,14 @@
             this.dgvDanhSach.AllowUserToResizeRows = false;
             this.dgvDanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDanhSach.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDanhSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMaSach,
@@ -695,6 +697,19 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "\"Image Files|*.jpg;*.jpeg;*.png\"";
+            // 
+            // bt_XoaTrang
+            // 
+            this.bt_XoaTrang.BackColor = System.Drawing.Color.IndianRed;
+            this.bt_XoaTrang.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.bt_XoaTrang.Location = new System.Drawing.Point(221, 471);
+            this.bt_XoaTrang.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_XoaTrang.Name = "bt_XoaTrang";
+            this.bt_XoaTrang.Size = new System.Drawing.Size(108, 37);
+            this.bt_XoaTrang.TabIndex = 8;
+            this.bt_XoaTrang.Text = "Xóa trắng";
+            this.bt_XoaTrang.UseVisualStyleBackColor = false;
+            this.bt_XoaTrang.Click += new System.EventHandler(this.bt_XoaTrang_Click);
             // 
             // UC_Sach
             // 
@@ -773,5 +788,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button bt_XoaTrang;
     }
 }
