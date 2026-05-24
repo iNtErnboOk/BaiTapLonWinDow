@@ -39,3 +39,4 @@ D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài Tập lớn
 D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.CoreCompileInputs.cache
 D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe
 D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.pdb
+D:\C#\Bài Tập lớn Window\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_GiaHanSach.resources
