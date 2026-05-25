@@ -55,3 +55,18 @@ C:\Users\VU VAN MINH\Downloads\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug
 C:\Users\VU VAN MINH\Downloads\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.CoreCompileInputs.cache
 C:\Users\VU VAN MINH\Downloads\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe
 C:\Users\VU VAN MINH\Downloads\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.pdb
+E:\BaiTapLonWinDow\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe.config
+E:\BaiTapLonWinDow\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe
+E:\BaiTapLonWinDow\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.pdb
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.AssemblyReference.cache
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Form1.resources
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Properties.Resources.resources
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_DocGia.resources
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_GiaHanSach.resources
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_MuonSach.resources
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_Sach.resources
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_TraSach.resources
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.GenerateResource.cache
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.CoreCompileInputs.cache
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.pdb
