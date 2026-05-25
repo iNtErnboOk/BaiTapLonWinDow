@@ -7,7 +7,7 @@ namespace Bài_Tập_lớn_Window.UserControls
 {
     public partial class UC_DocGia : UserControl
     {
-        string chuoiKetNoi = @"Data Source=.;Initial Catalog=quanlydocgia;Integrated Security=True";
+        string chuoiKetNoi = @"Data Source=.;Initial Catalog=QuanLyThuVien;Integrated Security=True";
         SqlConnection conn = null;
 
         public UC_DocGia()
