@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace Bài_Tập_lớn_Window.UserControls
 {
     public partial class UC_MuonSach : UserControl
     {
-        string chuoiKetNoi = @"Data Source=.;Initial Catalog=QuanLyThuVien;Integrated Security=True";
+        // Use the database name that contains the DocGia table. Updated to match provided SQL script.
+        string chuoiKetNoi = @"Data Source=.;Initial Catalog=quanlydocgia;Integrated Security=True";
         SqlConnection conn;
         public UC_MuonSach()
         {
@@ -23,6 +25,10 @@ namespace Bài_Tập_lớn_Window.UserControls
         {
             SinhMaPhieuMuon();
             LoadSach();
+
+            // Ensure the TextChanged event is attached in case the designer did not wire it.
+            txtMaDG.TextChanged -= txtMaDG_TextChanged;
+            txtMaDG.TextChanged += txtMaDG_TextChanged;
 
         }
 
@@ -78,29 +84,30 @@ namespace Bài_Tập_lớn_Window.UserControls
                 return;
             }
 
+            string sql = "SELECT TenDocGia FROM DocGia WHERE MaDG = @ma";
+
             try
             {
-                conn = new SqlConnection(chuoiKetNoi);
+                // Use a local connection and command with using to ensure proper disposal
+                using (var localConn = new SqlConnection(chuoiKetNoi))
+                using (var cmd = new SqlCommand(sql, localConn))
+                {
+                    cmd.Parameters.AddWithValue("@ma", txtMaDG.Text.Trim());
 
-                conn.Open();
+                    localConn.Open();
 
-                string sql = "SELECT TenDocGia FROM DocGia WHERE MaDG = @ma";
+                    object result = cmd.ExecuteScalar();
 
-                SqlCommand cmd = new SqlCommand(sql, conn);
-
-                cmd.Parameters.AddWithValue("@ma", txtMaDG.Text.Trim());
-
-                object result = cmd.ExecuteScalar();
-
-                if (result != null)
-                    txtTenDocGia.Text = result.ToString();
-                else
-                    txtTenDocGia.Clear();
-
-                conn.Close();
+                    if (result != null && result != DBNull.Value)
+                        txtTenDocGia.Text = result.ToString();
+                    else
+                        txtTenDocGia.Clear();
+                }
             }
-            catch
+            catch (Exception ex)
             {
+                // Log exception for debugging and clear the name field.
+                Debug.WriteLine("Error in txtMaDG_TextChanged: " + ex.Message);
                 txtTenDocGia.Clear();
             }
         }
