@@ -1,4 +1,4 @@
-﻿USE quanlydocgia;
+﻿USE QuanLyThuVien;
 GO
 
 -- 1. Xóa bảng cũ nếu nó đã tồn tại

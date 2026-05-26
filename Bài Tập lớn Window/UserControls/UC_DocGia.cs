@@ -96,6 +96,7 @@ namespace Bài_Tập_lớn_Window.UserControls
 
             MessageBox.Show("Thêm độc giả thành công!");
             HienThiDuLieu();
+            ClearForm();
         }
 
         private void btnSuaSach_Click(object sender, EventArgs e)
@@ -122,6 +123,7 @@ namespace Bài_Tập_lớn_Window.UserControls
 
             MessageBox.Show("Sửa thông tin thành công!");
             HienThiDuLieu();
+            ClearForm();
         }
 
         private void btnXoaSach_Click(object sender, EventArgs e)
@@ -138,6 +140,7 @@ namespace Bài_Tập_lớn_Window.UserControls
 
             MessageBox.Show("Xóa độc giả thành công!");
             HienThiDuLieu();
+            ClearForm();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -156,6 +159,27 @@ namespace Bài_Tập_lớn_Window.UserControls
             dataGridView1.DataSource = dtTimKiem;
 
             conn.Close();
+        }
+
+        private void ClearForm()
+        {
+            txtMaDocGia.Text = "";
+            txtTenDocGia.Text = "";
+            txtSDT.Text = "";
+            txtEmail.Text = "";
+            txtDiaChi.Text = "";
+            dtpNamSinh.Value = DateTime.Now;
+            radNam.Checked = true;
+            txtMaDocGia.ReadOnly = false;
+            txtMaDocGia.Focus();
+        }
+        private void btnXoaTrang_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa trắng form nhập?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                ClearForm();
+            }
         }
     }
 }

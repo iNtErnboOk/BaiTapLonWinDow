@@ -86,6 +86,12 @@
     <Compile Include="UserControls\UC_TraSach.Designer.cs">
       <DependentUpon>UC_TraSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_ThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_ThongKe.Designer.cs">
+      <DependentUpon>UC_ThongKe.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Sach.resx">
       <DependentUpon>UC_Sach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_ThongKe.resx">
+      <DependentUpon>UC_ThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_TraSach.resx">
       <DependentUpon>UC_TraSach.cs</DependentUpon>

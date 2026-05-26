@@ -203,19 +203,10 @@ namespace Bài_Tập_lớn_Window.UserControls
             }
         }
 
+        //Quang
         private void btnHuyPhieu_Click(object sender, EventArgs e)
         {
-            dgvDanhSachSachMuon.Rows.Clear();
-
-            txtMaDG.Clear();
-            txtTenDocGia.Clear();
-
-            txtMaSach.Clear();
-            txtTenSach.Clear();
-
-            nudSoLuong.Value = 0;
-
-            SinhMaPhieuMuon();
+            ClearForm();
         }
 
         private void btnLapPhieuMuon_Click(object sender, EventArgs e)
@@ -296,5 +287,20 @@ namespace Bài_Tập_lớn_Window.UserControls
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
+        // Quang
+        private void ClearForm()
+        {
+            txtMaDG.Clear();
+            txtTenDocGia.Clear();
+            txtMaSach.Clear();
+            txtTenSach.Clear();
+            nudSoLuong.Value = 0;
+            dtpNgayMuon.Value = DateTime.Now;
+            dtpNgayTra.Value = DateTime.Now.AddDays(7);
+            dgvDanhSachSachMuon.Rows.Clear();
+            SinhMaPhieuMuon(); // Sinh mã phiếu mới
+            txtMaDG.Focus();
+        }
+
     }
 }

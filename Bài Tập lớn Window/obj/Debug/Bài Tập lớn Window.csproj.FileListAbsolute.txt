@@ -85,3 +85,20 @@ D:\C#\Bài Tập lớn Window\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\
 D:\C#\Bài Tập lớn Window\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.CoreCompileInputs.cache
 D:\C#\Bài Tập lớn Window\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe
 D:\C#\Bài Tập lớn Window\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.pdb
+D:\BaiTapLonWinDow\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe.config
+D:\BaiTapLonWinDow\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.exe
+D:\BaiTapLonWinDow\Bài Tập lớn Window\bin\Debug\Bài Tập lớn Window.pdb
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.AssemblyReference.cache
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe.config
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Form1.resources
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.Properties.Resources.resources
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_DocGia.resources
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_GiaHanSach.resources
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_MuonSach.resources
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_Sach.resources
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_TraSach.resources
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.GenerateResource.cache
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csproj.CoreCompileInputs.cache
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.pdb
+D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_ThongKe.resources

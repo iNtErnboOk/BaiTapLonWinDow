@@ -51,5 +51,10 @@ namespace Bài_Tập_lớn_Window
         {
             LoadUC(new UserControls.UC_GiaHanSach());
         }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            LoadUC(new UserControls.UC_ThongKe());
+        }
     }
 }

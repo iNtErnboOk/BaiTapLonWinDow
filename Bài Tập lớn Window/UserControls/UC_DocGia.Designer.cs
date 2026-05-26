@@ -66,6 +66,7 @@
             this.colDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoaTrang = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,6 +87,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnXoaTrang);
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel4);
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
@@ -369,7 +371,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.7767F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.2233F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel2.Controls.Add(this.textTimKiem, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.comboBox2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.comboBox3, 2, 0);
@@ -387,7 +389,7 @@
             this.textTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTimKiem.Location = new System.Drawing.Point(3, 16);
             this.textTimKiem.Name = "textTimKiem";
-            this.textTimKiem.Size = new System.Drawing.Size(259, 22);
+            this.textTimKiem.Size = new System.Drawing.Size(258, 22);
             this.textTimKiem.TabIndex = 0;
             // 
             // comboBox2
@@ -396,7 +398,7 @@
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(268, 14);
+            this.comboBox2.Location = new System.Drawing.Point(267, 14);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(165, 24);
             this.comboBox2.TabIndex = 1;
@@ -407,7 +409,7 @@
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(439, 14);
+            this.comboBox3.Location = new System.Drawing.Point(438, 14);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(172, 24);
             this.comboBox3.TabIndex = 2;
@@ -419,9 +421,9 @@
             this.txtTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimKiem.ForeColor = System.Drawing.Color.White;
-            this.txtTimKiem.Location = new System.Drawing.Point(617, 4);
+            this.txtTimKiem.Location = new System.Drawing.Point(616, 4);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(99, 34);
+            this.txtTimKiem.Size = new System.Drawing.Size(100, 34);
             this.txtTimKiem.TabIndex = 3;
             this.txtTimKiem.Text = "Tìm Kiếm";
             this.txtTimKiem.UseVisualStyleBackColor = false;
@@ -512,12 +514,24 @@
             this.Column2.MinimumWidth = 8;
             this.Column2.Name = "Column2";
             // 
+            // btnXoaTrang
+            // 
+            this.btnXoaTrang.BackColor = System.Drawing.Color.IndianRed;
+            this.btnXoaTrang.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnXoaTrang.Location = new System.Drawing.Point(184, 388);
+            this.btnXoaTrang.Name = "btnXoaTrang";
+            this.btnXoaTrang.Size = new System.Drawing.Size(81, 30);
+            this.btnXoaTrang.TabIndex = 9;
+            this.btnXoaTrang.Text = "Xóa trắng";
+            this.btnXoaTrang.UseVisualStyleBackColor = false;
+            this.btnXoaTrang.Click += new System.EventHandler(this.btnXoaTrang_Click);
+            // 
             // UC_DocGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UC_DocGia";
             this.Size = new System.Drawing.Size(1030, 681);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -577,6 +591,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button btnXoaTrang;
     }
 }
 
