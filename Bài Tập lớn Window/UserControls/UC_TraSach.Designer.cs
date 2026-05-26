@@ -48,19 +48,12 @@
             this.lblMaPhieuMuon = new System.Windows.Forms.Label();
             this.txtMaPhieuMuon = new System.Windows.Forms.TextBox();
             this.btnLuuPhieuTra = new System.Windows.Forms.Button();
-            this.btnHuyPhieuTra = new System.Windows.Forms.Button();
+            this.btnXoaPhieuMuon = new System.Windows.Forms.Button();
             this.dtpNgayMuon = new System.Windows.Forms.DateTimePicker();
             this.nudSoLuong = new System.Windows.Forms.NumericUpDown();
             this.cbTrangThai = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDanhSachPhieuMuon = new System.Windows.Forms.DataGridView();
-            this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaPhieuMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaDocGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTrangThaiTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblThongTinPhieuTra = new System.Windows.Forms.Label();
             this.dgvDachSachTraSach = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +63,13 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnHuyPhieu = new System.Windows.Forms.Button();
+            this.colMaPhieuMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaDocGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTrangThaiTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -97,7 +97,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
+            this.tableLayoutPanel2.Controls.Add(this.btnHuyPhieu, 6, 2);
             this.tableLayoutPanel2.Controls.Add(this.dtpNgayTraThucTe, 3, 2);
             this.tableLayoutPanel2.Controls.Add(this.dtpNgayTra, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtTienPhat, 5, 2);
@@ -114,7 +115,7 @@
             this.tableLayoutPanel2.Controls.Add(this.lblMaPhieuMuon, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtMaPhieuMuon, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnLuuPhieuTra, 6, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnHuyPhieuTra, 6, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnXoaPhieuMuon, 6, 1);
             this.tableLayoutPanel2.Controls.Add(this.dtpNgayMuon, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.nudSoLuong, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.cbTrangThai, 5, 1);
@@ -132,7 +133,7 @@
             this.dtpNgayTraThucTe.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dtpNgayTraThucTe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNgayTraThucTe.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayTraThucTe.Location = new System.Drawing.Point(425, 77);
+            this.dtpNgayTraThucTe.Location = new System.Drawing.Point(424, 77);
             this.dtpNgayTraThucTe.Name = "dtpNgayTraThucTe";
             this.dtpNgayTraThucTe.Size = new System.Drawing.Size(134, 22);
             this.dtpNgayTraThucTe.TabIndex = 26;
@@ -142,7 +143,7 @@
             this.dtpNgayTra.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dtpNgayTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNgayTra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayTra.Location = new System.Drawing.Point(425, 43);
+            this.dtpNgayTra.Location = new System.Drawing.Point(424, 43);
             this.dtpNgayTra.Name = "dtpNgayTra";
             this.dtpNgayTra.Size = new System.Drawing.Size(134, 22);
             this.dtpNgayTra.TabIndex = 25;
@@ -151,7 +152,7 @@
             // 
             this.txtTienPhat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtTienPhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTienPhat.Location = new System.Drawing.Point(689, 77);
+            this.txtTienPhat.Location = new System.Drawing.Point(688, 77);
             this.txtTienPhat.Name = "txtTienPhat";
             this.txtTienPhat.ReadOnly = true;
             this.txtTienPhat.Size = new System.Drawing.Size(118, 22);
@@ -162,7 +163,7 @@
             this.lblTienPhat.AutoSize = true;
             this.lblTienPhat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblTienPhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTienPhat.Location = new System.Drawing.Point(565, 79);
+            this.lblTienPhat.Location = new System.Drawing.Point(564, 79);
             this.lblTienPhat.Name = "lblTienPhat";
             this.lblTienPhat.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.lblTienPhat.Size = new System.Drawing.Size(118, 23);
@@ -174,7 +175,7 @@
             this.lblNgayTraThucTe.AutoSize = true;
             this.lblNgayTraThucTe.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblNgayTraThucTe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNgayTraThucTe.Location = new System.Drawing.Point(286, 79);
+            this.lblNgayTraThucTe.Location = new System.Drawing.Point(285, 79);
             this.lblNgayTraThucTe.Name = "lblNgayTraThucTe";
             this.lblNgayTraThucTe.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.lblNgayTraThucTe.Size = new System.Drawing.Size(133, 23);
@@ -185,7 +186,7 @@
             // 
             this.txtTenDG.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtTenDG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenDG.Location = new System.Drawing.Point(122, 77);
+            this.txtTenDG.Location = new System.Drawing.Point(121, 77);
             this.txtTenDG.Name = "txtTenDG";
             this.txtTenDG.ReadOnly = true;
             this.txtTenDG.Size = new System.Drawing.Size(158, 22);
@@ -199,7 +200,7 @@
             this.lblTenDG.Location = new System.Drawing.Point(3, 79);
             this.lblTenDG.Name = "lblTenDG";
             this.lblTenDG.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.lblTenDG.Size = new System.Drawing.Size(113, 23);
+            this.lblTenDG.Size = new System.Drawing.Size(112, 23);
             this.lblTenDG.TabIndex = 16;
             this.lblTenDG.Text = "Tên Độc Giả:";
             // 
@@ -208,7 +209,7 @@
             this.lblTrangThai.AutoSize = true;
             this.lblTrangThai.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrangThai.Location = new System.Drawing.Point(565, 45);
+            this.lblTrangThai.Location = new System.Drawing.Point(564, 45);
             this.lblTrangThai.Name = "lblTrangThai";
             this.lblTrangThai.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.lblTrangThai.Size = new System.Drawing.Size(118, 23);
@@ -220,7 +221,7 @@
             this.lblNgayTra.AutoSize = true;
             this.lblNgayTra.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblNgayTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNgayTra.Location = new System.Drawing.Point(286, 45);
+            this.lblNgayTra.Location = new System.Drawing.Point(285, 45);
             this.lblNgayTra.Name = "lblNgayTra";
             this.lblNgayTra.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.lblNgayTra.Size = new System.Drawing.Size(133, 23);
@@ -231,7 +232,7 @@
             // 
             this.txtMaDG.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtMaDG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaDG.Location = new System.Drawing.Point(122, 43);
+            this.txtMaDG.Location = new System.Drawing.Point(121, 43);
             this.txtMaDG.Name = "txtMaDG";
             this.txtMaDG.ReadOnly = true;
             this.txtMaDG.Size = new System.Drawing.Size(158, 22);
@@ -245,7 +246,7 @@
             this.lblMaDG.Location = new System.Drawing.Point(3, 45);
             this.lblMaDG.Name = "lblMaDG";
             this.lblMaDG.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.lblMaDG.Size = new System.Drawing.Size(113, 23);
+            this.lblMaDG.Size = new System.Drawing.Size(112, 23);
             this.lblMaDG.TabIndex = 10;
             this.lblMaDG.Text = "Mã Độc Giả:";
             // 
@@ -254,7 +255,7 @@
             this.lblSoLuong.AutoSize = true;
             this.lblSoLuong.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoLuong.Location = new System.Drawing.Point(565, 11);
+            this.lblSoLuong.Location = new System.Drawing.Point(564, 11);
             this.lblSoLuong.Name = "lblSoLuong";
             this.lblSoLuong.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.lblSoLuong.Size = new System.Drawing.Size(118, 23);
@@ -266,7 +267,7 @@
             this.txtNgayMuon.AutoSize = true;
             this.txtNgayMuon.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtNgayMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNgayMuon.Location = new System.Drawing.Point(286, 11);
+            this.txtNgayMuon.Location = new System.Drawing.Point(285, 11);
             this.txtNgayMuon.Name = "txtNgayMuon";
             this.txtNgayMuon.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.txtNgayMuon.Size = new System.Drawing.Size(133, 23);
@@ -281,7 +282,7 @@
             this.lblMaPhieuMuon.Location = new System.Drawing.Point(3, 11);
             this.lblMaPhieuMuon.Name = "lblMaPhieuMuon";
             this.lblMaPhieuMuon.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.lblMaPhieuMuon.Size = new System.Drawing.Size(113, 23);
+            this.lblMaPhieuMuon.Size = new System.Drawing.Size(112, 23);
             this.lblMaPhieuMuon.TabIndex = 0;
             this.lblMaPhieuMuon.Text = "Mã Phiếu Mượn:\r\n";
             // 
@@ -289,7 +290,7 @@
             // 
             this.txtMaPhieuMuon.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtMaPhieuMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaPhieuMuon.Location = new System.Drawing.Point(122, 9);
+            this.txtMaPhieuMuon.Location = new System.Drawing.Point(121, 9);
             this.txtMaPhieuMuon.Name = "txtMaPhieuMuon";
             this.txtMaPhieuMuon.Size = new System.Drawing.Size(158, 22);
             this.txtMaPhieuMuon.TabIndex = 3;
@@ -301,33 +302,35 @@
             this.btnLuuPhieuTra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuuPhieuTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuuPhieuTra.ForeColor = System.Drawing.Color.White;
-            this.btnLuuPhieuTra.Location = new System.Drawing.Point(813, 3);
+            this.btnLuuPhieuTra.Location = new System.Drawing.Point(812, 3);
             this.btnLuuPhieuTra.Name = "btnLuuPhieuTra";
-            this.btnLuuPhieuTra.Size = new System.Drawing.Size(143, 28);
+            this.btnLuuPhieuTra.Size = new System.Drawing.Size(144, 28);
             this.btnLuuPhieuTra.TabIndex = 22;
             this.btnLuuPhieuTra.Text = "Lưu Phiếu Trả";
             this.btnLuuPhieuTra.UseVisualStyleBackColor = false;
+            this.btnLuuPhieuTra.Click += new System.EventHandler(this.btnLuuPhieuTra_Click);
             // 
-            // btnHuyPhieuTra
+            // btnXoaPhieuMuon
             // 
-            this.btnHuyPhieuTra.BackColor = System.Drawing.Color.IndianRed;
-            this.btnHuyPhieuTra.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnHuyPhieuTra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHuyPhieuTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuyPhieuTra.ForeColor = System.Drawing.Color.White;
-            this.btnHuyPhieuTra.Location = new System.Drawing.Point(813, 37);
-            this.btnHuyPhieuTra.Name = "btnHuyPhieuTra";
-            this.btnHuyPhieuTra.Size = new System.Drawing.Size(143, 28);
-            this.btnHuyPhieuTra.TabIndex = 23;
-            this.btnHuyPhieuTra.Text = "Hủy Phiếu Trả";
-            this.btnHuyPhieuTra.UseVisualStyleBackColor = false;
+            this.btnXoaPhieuMuon.BackColor = System.Drawing.Color.IndianRed;
+            this.btnXoaPhieuMuon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnXoaPhieuMuon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXoaPhieuMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoaPhieuMuon.ForeColor = System.Drawing.Color.White;
+            this.btnXoaPhieuMuon.Location = new System.Drawing.Point(812, 37);
+            this.btnXoaPhieuMuon.Name = "btnXoaPhieuMuon";
+            this.btnXoaPhieuMuon.Size = new System.Drawing.Size(144, 28);
+            this.btnXoaPhieuMuon.TabIndex = 23;
+            this.btnXoaPhieuMuon.Text = "Xóa Phiếu Mượn";
+            this.btnXoaPhieuMuon.UseVisualStyleBackColor = false;
+            this.btnXoaPhieuMuon.Click += new System.EventHandler(this.btnXoaPhieuMuon_Click);
             // 
             // dtpNgayMuon
             // 
             this.dtpNgayMuon.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dtpNgayMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNgayMuon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayMuon.Location = new System.Drawing.Point(425, 9);
+            this.dtpNgayMuon.Location = new System.Drawing.Point(424, 9);
             this.dtpNgayMuon.Name = "dtpNgayMuon";
             this.dtpNgayMuon.Size = new System.Drawing.Size(134, 22);
             this.dtpNgayMuon.TabIndex = 24;
@@ -336,7 +339,7 @@
             // 
             this.nudSoLuong.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.nudSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudSoLuong.Location = new System.Drawing.Point(689, 9);
+            this.nudSoLuong.Location = new System.Drawing.Point(688, 9);
             this.nudSoLuong.Name = "nudSoLuong";
             this.nudSoLuong.ReadOnly = true;
             this.nudSoLuong.Size = new System.Drawing.Size(118, 22);
@@ -351,7 +354,7 @@
             this.cbTrangThai.Items.AddRange(new object[] {
             "Đúng hạn",
             "Quá hạn"});
-            this.cbTrangThai.Location = new System.Drawing.Point(689, 41);
+            this.cbTrangThai.Location = new System.Drawing.Point(688, 41);
             this.cbTrangThai.Name = "cbTrangThai";
             this.cbTrangThai.Size = new System.Drawing.Size(118, 24);
             this.cbTrangThai.TabIndex = 28;
@@ -380,7 +383,6 @@
             this.dgvDanhSachPhieuMuon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDanhSachPhieuMuon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSachPhieuMuon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colSTT,
             this.colMaPhieuMuon,
             this.colMaDocGia,
             this.colTenDG,
@@ -392,47 +394,7 @@
             this.dgvDanhSachPhieuMuon.Name = "dgvDanhSachPhieuMuon";
             this.dgvDanhSachPhieuMuon.Size = new System.Drawing.Size(959, 233);
             this.dgvDanhSachPhieuMuon.TabIndex = 8;
-            // 
-            // colSTT
-            // 
-            this.colSTT.FillWeight = 30F;
-            this.colSTT.HeaderText = "STT";
-            this.colSTT.Name = "colSTT";
-            // 
-            // colMaPhieuMuon
-            // 
-            this.colMaPhieuMuon.FillWeight = 90F;
-            this.colMaPhieuMuon.HeaderText = "Mã Phiếu Mượn";
-            this.colMaPhieuMuon.Name = "colMaPhieuMuon";
-            // 
-            // colMaDocGia
-            // 
-            this.colMaDocGia.FillWeight = 80F;
-            this.colMaDocGia.HeaderText = "Mã Độc Giả";
-            this.colMaDocGia.Name = "colMaDocGia";
-            // 
-            // colTenDG
-            // 
-            this.colTenDG.HeaderText = "Tên Độc Giả";
-            this.colTenDG.Name = "colTenDG";
-            // 
-            // colNgayMuon
-            // 
-            this.colNgayMuon.FillWeight = 60F;
-            this.colNgayMuon.HeaderText = "Ngày Mượn";
-            this.colNgayMuon.Name = "colNgayMuon";
-            // 
-            // colNgayTra
-            // 
-            this.colNgayTra.FillWeight = 60F;
-            this.colNgayTra.HeaderText = "Ngày Trả";
-            this.colNgayTra.Name = "colNgayTra";
-            // 
-            // colTrangThaiTra
-            // 
-            this.colTrangThaiTra.FillWeight = 80F;
-            this.colTrangThaiTra.HeaderText = "Trạng Thái Trả";
-            this.colTrangThaiTra.Name = "colTrangThaiTra";
+            this.dgvDanhSachPhieuMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachPhieuMuon_CellClick);
             // 
             // lblThongTinPhieuTra
             // 
@@ -513,6 +475,62 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "Tiền Phạt";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
+            // btnHuyPhieu
+            // 
+            this.btnHuyPhieu.BackColor = System.Drawing.Color.Gray;
+            this.btnHuyPhieu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHuyPhieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHuyPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuyPhieu.ForeColor = System.Drawing.Color.White;
+            this.btnHuyPhieu.Location = new System.Drawing.Point(812, 71);
+            this.btnHuyPhieu.Name = "btnHuyPhieu";
+            this.btnHuyPhieu.Size = new System.Drawing.Size(144, 28);
+            this.btnHuyPhieu.TabIndex = 29;
+            this.btnHuyPhieu.Text = "Hủy Phiếu";
+            this.btnHuyPhieu.UseVisualStyleBackColor = false;
+            this.btnHuyPhieu.Click += new System.EventHandler(this.btnHuyPhieu_Click);
+            // 
+            // colMaPhieuMuon
+            // 
+            this.colMaPhieuMuon.DataPropertyName = "MaPhieuMuon";
+            this.colMaPhieuMuon.FillWeight = 90F;
+            this.colMaPhieuMuon.HeaderText = "Mã Phiếu Mượn";
+            this.colMaPhieuMuon.Name = "colMaPhieuMuon";
+            // 
+            // colMaDocGia
+            // 
+            this.colMaDocGia.DataPropertyName = "MaDG";
+            this.colMaDocGia.FillWeight = 80F;
+            this.colMaDocGia.HeaderText = "Mã Độc Giả";
+            this.colMaDocGia.Name = "colMaDocGia";
+            // 
+            // colTenDG
+            // 
+            this.colTenDG.DataPropertyName = "TenDocGia";
+            this.colTenDG.HeaderText = "Tên Độc Giả";
+            this.colTenDG.Name = "colTenDG";
+            // 
+            // colNgayMuon
+            // 
+            this.colNgayMuon.DataPropertyName = "NgayMuon";
+            this.colNgayMuon.FillWeight = 60F;
+            this.colNgayMuon.HeaderText = "Ngày Mượn";
+            this.colNgayMuon.Name = "colNgayMuon";
+            // 
+            // colNgayTra
+            // 
+            this.colNgayTra.DataPropertyName = "NgayTra";
+            this.colNgayTra.FillWeight = 60F;
+            this.colNgayTra.HeaderText = "Ngày Trả";
+            this.colNgayTra.Name = "colNgayTra";
+            // 
+            // colTrangThaiTra
+            // 
+            this.colTrangThaiTra.DataPropertyName = "TrangThaiTra";
+            this.colTrangThaiTra.FillWeight = 80F;
+            this.colTrangThaiTra.HeaderText = "Trạng Thái Trả";
+            this.colTrangThaiTra.Name = "colTrangThaiTra";
+            // 
             // UC_TraSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,6 +541,7 @@
             this.Controls.Add(this.lblThongTin);
             this.Name = "UC_TraSach";
             this.Size = new System.Drawing.Size(1030, 681);
+            this.Load += new System.EventHandler(this.UC_TraSach_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).EndInit();
@@ -552,7 +571,7 @@
         private System.Windows.Forms.TextBox txtTienPhat;
         private System.Windows.Forms.Label lblTienPhat;
         private System.Windows.Forms.Button btnLuuPhieuTra;
-        private System.Windows.Forms.Button btnHuyPhieuTra;
+        private System.Windows.Forms.Button btnXoaPhieuMuon;
         private System.Windows.Forms.DateTimePicker dtpNgayMuon;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dtpNgayTraThucTe;
@@ -562,13 +581,6 @@
         private System.Windows.Forms.DataGridView dgvDanhSachPhieuMuon;
         private System.Windows.Forms.Label lblThongTinPhieuTra;
         private System.Windows.Forms.DataGridView dgvDachSachTraSach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMaPhieuMuon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMaDocGia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTenDG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNgayMuon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNgayTra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTrangThaiTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
@@ -576,5 +588,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.Button btnHuyPhieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaPhieuMuon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaDocGia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTenDG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNgayMuon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNgayTra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTrangThaiTra;
     }
 }

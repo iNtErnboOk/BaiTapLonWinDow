@@ -30,15 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDanhSachPhieuMuon = new System.Windows.Forms.DataGridView();
-            this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaPhieuMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaDocGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTrangThaiTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblThongTinGiaHan = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnHuyGiaHan = new System.Windows.Forms.Button();
+            this.btnGiaHanSach = new System.Windows.Forms.Button();
             this.dtpGiaHanTra = new System.Windows.Forms.DateTimePicker();
             this.dtpNgayTra = new System.Windows.Forms.DateTimePicker();
             this.lblGiaHanTra = new System.Windows.Forms.Label();
@@ -51,8 +46,11 @@
             this.lblMaPhieuMuon = new System.Windows.Forms.Label();
             this.txtMaPhieuMuon = new System.Windows.Forms.TextBox();
             this.dtpNgayMuon = new System.Windows.Forms.DateTimePicker();
-            this.btnGiaHanSach = new System.Windows.Forms.Button();
-            this.btnHuyGiaHan = new System.Windows.Forms.Button();
+            this.colMaPhieuMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaDocGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachPhieuMuon)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -71,59 +69,17 @@
             this.dgvDanhSachPhieuMuon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDanhSachPhieuMuon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSachPhieuMuon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colSTT,
             this.colMaPhieuMuon,
             this.colMaDocGia,
             this.colTenDG,
             this.colNgayMuon,
-            this.colNgayTra,
-            this.colTrangThaiTra});
+            this.colNgayTra});
             this.dgvDanhSachPhieuMuon.EnableHeadersVisualStyles = false;
             this.dgvDanhSachPhieuMuon.Location = new System.Drawing.Point(36, 50);
             this.dgvDanhSachPhieuMuon.Name = "dgvDanhSachPhieuMuon";
             this.dgvDanhSachPhieuMuon.Size = new System.Drawing.Size(959, 335);
             this.dgvDanhSachPhieuMuon.TabIndex = 9;
-            // 
-            // colSTT
-            // 
-            this.colSTT.FillWeight = 30F;
-            this.colSTT.HeaderText = "STT";
-            this.colSTT.Name = "colSTT";
-            // 
-            // colMaPhieuMuon
-            // 
-            this.colMaPhieuMuon.FillWeight = 90F;
-            this.colMaPhieuMuon.HeaderText = "Mã Phiếu Mượn";
-            this.colMaPhieuMuon.Name = "colMaPhieuMuon";
-            // 
-            // colMaDocGia
-            // 
-            this.colMaDocGia.FillWeight = 80F;
-            this.colMaDocGia.HeaderText = "Mã Độc Giả";
-            this.colMaDocGia.Name = "colMaDocGia";
-            // 
-            // colTenDG
-            // 
-            this.colTenDG.HeaderText = "Tên Độc Giả";
-            this.colTenDG.Name = "colTenDG";
-            // 
-            // colNgayMuon
-            // 
-            this.colNgayMuon.FillWeight = 60F;
-            this.colNgayMuon.HeaderText = "Ngày Mượn";
-            this.colNgayMuon.Name = "colNgayMuon";
-            // 
-            // colNgayTra
-            // 
-            this.colNgayTra.FillWeight = 60F;
-            this.colNgayTra.HeaderText = "Ngày Trả";
-            this.colNgayTra.Name = "colNgayTra";
-            // 
-            // colTrangThaiTra
-            // 
-            this.colTrangThaiTra.FillWeight = 80F;
-            this.colTrangThaiTra.HeaderText = "Gia Hạn Trả";
-            this.colTrangThaiTra.Name = "colTrangThaiTra";
+            this.dgvDanhSachPhieuMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachPhieuMuon_CellClick);
             // 
             // lblThongTinGiaHan
             // 
@@ -143,7 +99,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.97102F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel2.Controls.Add(this.btnHuyGiaHan, 4, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnGiaHanSach, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.dtpGiaHanTra, 3, 2);
@@ -167,12 +123,42 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(778, 191);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
+            // btnHuyGiaHan
+            // 
+            this.btnHuyGiaHan.BackColor = System.Drawing.Color.IndianRed;
+            this.btnHuyGiaHan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHuyGiaHan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHuyGiaHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuyGiaHan.ForeColor = System.Drawing.Color.White;
+            this.btnHuyGiaHan.Location = new System.Drawing.Point(655, 66);
+            this.btnHuyGiaHan.Name = "btnHuyGiaHan";
+            this.btnHuyGiaHan.Size = new System.Drawing.Size(120, 57);
+            this.btnHuyGiaHan.TabIndex = 29;
+            this.btnHuyGiaHan.Text = "Hủy Gia Hạn";
+            this.btnHuyGiaHan.UseVisualStyleBackColor = false;
+            this.btnHuyGiaHan.Click += new System.EventHandler(this.btnHuyGiaHan_Click);
+            // 
+            // btnGiaHanSach
+            // 
+            this.btnGiaHanSach.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnGiaHanSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGiaHanSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGiaHanSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGiaHanSach.ForeColor = System.Drawing.Color.White;
+            this.btnGiaHanSach.Location = new System.Drawing.Point(655, 3);
+            this.btnGiaHanSach.Name = "btnGiaHanSach";
+            this.btnGiaHanSach.Size = new System.Drawing.Size(120, 57);
+            this.btnGiaHanSach.TabIndex = 27;
+            this.btnGiaHanSach.Text = "Gia Hạn Sách";
+            this.btnGiaHanSach.UseVisualStyleBackColor = false;
+            this.btnGiaHanSach.Click += new System.EventHandler(this.btnGiaHanSach_Click);
+            // 
             // dtpGiaHanTra
             // 
             this.dtpGiaHanTra.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dtpGiaHanTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpGiaHanTra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpGiaHanTra.Location = new System.Drawing.Point(516, 166);
+            this.dtpGiaHanTra.Location = new System.Drawing.Point(515, 166);
             this.dtpGiaHanTra.Name = "dtpGiaHanTra";
             this.dtpGiaHanTra.Size = new System.Drawing.Size(134, 22);
             this.dtpGiaHanTra.TabIndex = 26;
@@ -182,7 +168,7 @@
             this.dtpNgayTra.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dtpNgayTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNgayTra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayTra.Location = new System.Drawing.Point(516, 101);
+            this.dtpNgayTra.Location = new System.Drawing.Point(515, 101);
             this.dtpNgayTra.Name = "dtpNgayTra";
             this.dtpNgayTra.Size = new System.Drawing.Size(134, 22);
             this.dtpNgayTra.TabIndex = 25;
@@ -192,7 +178,7 @@
             this.lblGiaHanTra.AutoSize = true;
             this.lblGiaHanTra.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblGiaHanTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGiaHanTra.Location = new System.Drawing.Point(377, 168);
+            this.lblGiaHanTra.Location = new System.Drawing.Point(376, 168);
             this.lblGiaHanTra.Name = "lblGiaHanTra";
             this.lblGiaHanTra.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.lblGiaHanTra.Size = new System.Drawing.Size(133, 23);
@@ -206,7 +192,7 @@
             this.txtTenDG.Location = new System.Drawing.Point(160, 166);
             this.txtTenDG.Name = "txtTenDG";
             this.txtTenDG.ReadOnly = true;
-            this.txtTenDG.Size = new System.Drawing.Size(211, 22);
+            this.txtTenDG.Size = new System.Drawing.Size(210, 22);
             this.txtTenDG.TabIndex = 17;
             // 
             // lblTenDG
@@ -226,7 +212,7 @@
             this.lblNgayTra.AutoSize = true;
             this.lblNgayTra.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblNgayTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNgayTra.Location = new System.Drawing.Point(377, 103);
+            this.lblNgayTra.Location = new System.Drawing.Point(376, 103);
             this.lblNgayTra.Name = "lblNgayTra";
             this.lblNgayTra.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.lblNgayTra.Size = new System.Drawing.Size(133, 23);
@@ -240,7 +226,7 @@
             this.txtMaDG.Location = new System.Drawing.Point(160, 101);
             this.txtMaDG.Name = "txtMaDG";
             this.txtMaDG.ReadOnly = true;
-            this.txtMaDG.Size = new System.Drawing.Size(211, 22);
+            this.txtMaDG.Size = new System.Drawing.Size(210, 22);
             this.txtMaDG.TabIndex = 11;
             // 
             // lblMaDG
@@ -260,7 +246,7 @@
             this.lblNgayMuon.AutoSize = true;
             this.lblNgayMuon.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblNgayMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNgayMuon.Location = new System.Drawing.Point(377, 40);
+            this.lblNgayMuon.Location = new System.Drawing.Point(376, 40);
             this.lblNgayMuon.Name = "lblNgayMuon";
             this.lblNgayMuon.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.lblNgayMuon.Size = new System.Drawing.Size(133, 23);
@@ -285,7 +271,7 @@
             this.txtMaPhieuMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaPhieuMuon.Location = new System.Drawing.Point(160, 38);
             this.txtMaPhieuMuon.Name = "txtMaPhieuMuon";
-            this.txtMaPhieuMuon.Size = new System.Drawing.Size(211, 22);
+            this.txtMaPhieuMuon.Size = new System.Drawing.Size(210, 22);
             this.txtMaPhieuMuon.TabIndex = 3;
             // 
             // dtpNgayMuon
@@ -293,38 +279,44 @@
             this.dtpNgayMuon.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dtpNgayMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNgayMuon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayMuon.Location = new System.Drawing.Point(516, 38);
+            this.dtpNgayMuon.Location = new System.Drawing.Point(515, 38);
             this.dtpNgayMuon.Name = "dtpNgayMuon";
             this.dtpNgayMuon.Size = new System.Drawing.Size(134, 22);
             this.dtpNgayMuon.TabIndex = 24;
             // 
-            // btnGiaHanSach
+            // colMaPhieuMuon
             // 
-            this.btnGiaHanSach.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnGiaHanSach.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGiaHanSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGiaHanSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGiaHanSach.ForeColor = System.Drawing.Color.White;
-            this.btnGiaHanSach.Location = new System.Drawing.Point(656, 3);
-            this.btnGiaHanSach.Name = "btnGiaHanSach";
-            this.btnGiaHanSach.Size = new System.Drawing.Size(119, 57);
-            this.btnGiaHanSach.TabIndex = 27;
-            this.btnGiaHanSach.Text = "Gia Hạn Sách";
-            this.btnGiaHanSach.UseVisualStyleBackColor = false;
+            this.colMaPhieuMuon.DataPropertyName = "MaPhieuMuon";
+            this.colMaPhieuMuon.FillWeight = 90F;
+            this.colMaPhieuMuon.HeaderText = "Mã Phiếu Mượn";
+            this.colMaPhieuMuon.Name = "colMaPhieuMuon";
             // 
-            // btnHuyGiaHan
+            // colMaDocGia
             // 
-            this.btnHuyGiaHan.BackColor = System.Drawing.Color.IndianRed;
-            this.btnHuyGiaHan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnHuyGiaHan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHuyGiaHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuyGiaHan.ForeColor = System.Drawing.Color.White;
-            this.btnHuyGiaHan.Location = new System.Drawing.Point(656, 66);
-            this.btnHuyGiaHan.Name = "btnHuyGiaHan";
-            this.btnHuyGiaHan.Size = new System.Drawing.Size(119, 57);
-            this.btnHuyGiaHan.TabIndex = 29;
-            this.btnHuyGiaHan.Text = "Hủy Gia Hạn";
-            this.btnHuyGiaHan.UseVisualStyleBackColor = false;
+            this.colMaDocGia.DataPropertyName = "MaDG";
+            this.colMaDocGia.FillWeight = 80F;
+            this.colMaDocGia.HeaderText = "Mã Độc Giả";
+            this.colMaDocGia.Name = "colMaDocGia";
+            // 
+            // colTenDG
+            // 
+            this.colTenDG.DataPropertyName = "TenDG";
+            this.colTenDG.HeaderText = "Tên Độc Giả";
+            this.colTenDG.Name = "colTenDG";
+            // 
+            // colNgayMuon
+            // 
+            this.colNgayMuon.DataPropertyName = "NgayMuon";
+            this.colNgayMuon.FillWeight = 60F;
+            this.colNgayMuon.HeaderText = "Ngày Mượn";
+            this.colNgayMuon.Name = "colNgayMuon";
+            // 
+            // colNgayTra
+            // 
+            this.colNgayTra.DataPropertyName = "NgayTra";
+            this.colNgayTra.FillWeight = 60F;
+            this.colNgayTra.HeaderText = "Ngày Trả";
+            this.colNgayTra.Name = "colNgayTra";
             // 
             // UC_GiaHanSach
             // 
@@ -335,6 +327,7 @@
             this.Controls.Add(this.dgvDanhSachPhieuMuon);
             this.Name = "UC_GiaHanSach";
             this.Size = new System.Drawing.Size(1030, 681);
+            this.Load += new System.EventHandler(this.UC_GiaHanSach_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachPhieuMuon)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -360,14 +353,12 @@
         private System.Windows.Forms.Label lblMaPhieuMuon;
         private System.Windows.Forms.TextBox txtMaPhieuMuon;
         private System.Windows.Forms.DateTimePicker dtpNgayMuon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
+        private System.Windows.Forms.Button btnHuyGiaHan;
+        private System.Windows.Forms.Button btnGiaHanSach;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaPhieuMuon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaDocGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTenDG;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgayMuon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgayTra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTrangThaiTra;
-        private System.Windows.Forms.Button btnHuyGiaHan;
-        private System.Windows.Forms.Button btnGiaHanSach;
     }
 }
