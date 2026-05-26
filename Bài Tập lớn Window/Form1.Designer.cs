@@ -36,8 +36,6 @@
             this.btnTraSach = new System.Windows.Forms.Button();
             this.btnGiaHan = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
-            this.btnLichSu = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.uC_Sach1 = new Bài_Tập_lớn_Window.UserControls.UC_Sach();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -77,8 +75,6 @@
             this.flowLayoutPanel1.Controls.Add(this.btnTraSach);
             this.flowLayoutPanel1.Controls.Add(this.btnGiaHan);
             this.flowLayoutPanel1.Controls.Add(this.btnThongKe);
-            this.flowLayoutPanel1.Controls.Add(this.btnLichSu);
-            this.flowLayoutPanel1.Controls.Add(this.button8);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.ForeColor = System.Drawing.Color.White;
@@ -183,36 +179,6 @@
             this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThongKe.UseVisualStyleBackColor = false;
             // 
-            // btnLichSu
-            // 
-            this.btnLichSu.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnLichSu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLichSu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLichSu.ForeColor = System.Drawing.Color.White;
-            this.btnLichSu.Location = new System.Drawing.Point(3, 339);
-            this.btnLichSu.Name = "btnLichSu";
-            this.btnLichSu.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnLichSu.Size = new System.Drawing.Size(220, 50);
-            this.btnLichSu.TabIndex = 6;
-            this.btnLichSu.Text = "Lịch Sử Mượn/Trả";
-            this.btnLichSu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLichSu.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.SteelBlue;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(3, 395);
-            this.button8.Name = "button8";
-            this.button8.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button8.Size = new System.Drawing.Size(220, 50);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "button8";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.UseVisualStyleBackColor = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -264,8 +230,6 @@
         private System.Windows.Forms.Button btnGiaHan;
         private System.Windows.Forms.Button btnSach;
         private System.Windows.Forms.Button btnThongKe;
-        private System.Windows.Forms.Button btnLichSu;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.PictureBox pictureBox1;
         private UserControls.UC_Sach uC_Sach1;
     }
