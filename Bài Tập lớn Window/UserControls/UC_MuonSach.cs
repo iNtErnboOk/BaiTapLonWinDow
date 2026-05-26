@@ -1,72 +1,67 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Bài_Tập_lớn_Window.UserControls
 {
     public partial class UC_MuonSach : UserControl
     {
         string chuoiKetNoi = @"Data Source=.;Initial Catalog=QuanLyThuVien;Integrated Security=True";
-        SqlConnection conn;
+
         public UC_MuonSach()
         {
             InitializeComponent();
         }
+
         private void UC_MuonSach_Load(object sender, EventArgs e)
         {
             SinhMaPhieuMuon();
             LoadSach();
-
         }
 
         private void SinhMaPhieuMuon()
         {
-            conn = new SqlConnection(chuoiKetNoi);
-            conn.Open();
-
-            string sql = "SELECT TOP 1 MaPhieuMuon FROM PhieuMuon ORDER BY MaPhieuMuon DESC";
-
-            SqlCommand cmd = new SqlCommand(sql, conn);
-
-            object result = cmd.ExecuteScalar();
-
-            string maMoi = "PM001";
-
-            if (result != null)
+            try
             {
-                int so = int.Parse(result.ToString().Substring(2));
-                so++;
+                using (SqlConnection conn = new SqlConnection(chuoiKetNoi))
+                {
+                    conn.Open();
+                    string sql = "SELECT TOP 1 MaPhieuMuon FROM PhieuMuon ORDER BY MaPhieuMuon DESC";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    object result = cmd.ExecuteScalar();
 
-                maMoi = "PM" + so.ToString("D3");
+                    string maMoi = "PM001";
+                    if (result != null)
+                    {
+                        int so = int.Parse(result.ToString().Substring(2));
+                        so++;
+                        maMoi = "PM" + so.ToString("D3");
+                    }
+                    txtMaPhieuMuon.Text = maMoi;
+                }
             }
-
-            txtMaPhieuMuon.Text = maMoi;
-
-            conn.Close();
+            catch { txtMaPhieuMuon.Text = "PM001"; }
         }
-
 
         // Hiển thị danh sách sách
         private void LoadSach()
         {
-            conn = new SqlConnection(chuoiKetNoi);
-
-            string sql = "SELECT MaSach, TenSach, SoLuong FROM Sach";
-
-            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-
-            dgvChonSach.DataSource = dt;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(chuoiKetNoi))
+                {
+                    string sql = "SELECT MaSach, TenSach, SoLuong FROM Sach";
+                    SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgvChonSach.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải danh sách sách: " + ex.Message);
+            }
         }
 
         // Tự hiện tên độc giả
@@ -80,29 +75,18 @@ namespace Bài_Tập_lớn_Window.UserControls
 
             try
             {
-                conn = new SqlConnection(chuoiKetNoi);
+                using (SqlConnection conn = new SqlConnection(chuoiKetNoi))
+                {
+                    conn.Open();
+                    string sql = "SELECT TenDocGia FROM DocGia WHERE MaDG = @ma";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@ma", txtMaDG.Text.Trim());
 
-                conn.Open();
-
-                string sql = "SELECT TenDocGia FROM DocGia WHERE MaDG = @ma";
-
-                SqlCommand cmd = new SqlCommand(sql, conn);
-
-                cmd.Parameters.AddWithValue("@ma", txtMaDG.Text.Trim());
-
-                object result = cmd.ExecuteScalar();
-
-                if (result != null)
-                    txtTenDocGia.Text = result.ToString();
-                else
-                    txtTenDocGia.Clear();
-
-                conn.Close();
+                    object result = cmd.ExecuteScalar();
+                    txtTenDocGia.Text = result != null ? result.ToString() : "";
+                }
             }
-            catch
-            {
-                txtTenDocGia.Clear();
-            }
+            catch { txtTenDocGia.Clear(); }
         }
 
         // Tự hiện tên sách
@@ -116,29 +100,18 @@ namespace Bài_Tập_lớn_Window.UserControls
 
             try
             {
-                conn = new SqlConnection(chuoiKetNoi);
+                using (SqlConnection conn = new SqlConnection(chuoiKetNoi))
+                {
+                    conn.Open();
+                    string sql = "SELECT TenSach FROM Sach WHERE MaSach = @ma";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@ma", txtMaSach.Text.Trim());
 
-                conn.Open();
-
-                string sql = "SELECT TenSach FROM Sach WHERE MaSach = @ma";
-
-                SqlCommand cmd = new SqlCommand(sql, conn);
-
-                cmd.Parameters.AddWithValue("@ma", txtMaSach.Text.Trim());
-
-                object result = cmd.ExecuteScalar();
-
-                if (result != null)
-                    txtTenSach.Text = result.ToString();
-                else
-                    txtTenSach.Clear();
-
-                conn.Close();
+                    object result = cmd.ExecuteScalar();
+                    txtTenSach.Text = result != null ? result.ToString() : "";
+                }
             }
-            catch
-            {
-                txtTenSach.Clear();
-            }
+            catch { txtTenSach.Clear(); }
         }
 
         // Khi click vào sách trong dgvChonSach, tự động điền mã và tên sách vào ô bên dưới
@@ -147,16 +120,13 @@ namespace Bài_Tập_lớn_Window.UserControls
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvChonSach.Rows[e.RowIndex];
-
                 txtMaSach.Text = row.Cells[0].Value.ToString();
                 txtTenSach.Text = row.Cells[1].Value.ToString();
-
                 nudSoLuong.Value = 1;
             }
         }
 
         // Thêm sách vào danh sách mượn
-
         private void btnThemSach_Click(object sender, EventArgs e)
         {
             if (txtMaSach.Text.Trim() == "")
@@ -173,28 +143,21 @@ namespace Bài_Tập_lớn_Window.UserControls
 
             foreach (DataGridViewRow row in dgvDanhSachSachMuon.Rows)
             {
-                if (row.Cells[0].Value != null &&
-                    row.Cells[0].Value.ToString() == txtMaSach.Text)
+                if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == txtMaSach.Text)
                 {
-                    MessageBox.Show("Sách đã tồn tại!");
+                    MessageBox.Show("Sách đã tồn tại trong danh sách chờ!");
                     return;
                 }
             }
 
-            dgvDanhSachSachMuon.Rows.Add(
-                txtMaSach.Text,
-                txtTenSach.Text,
-                nudSoLuong.Value
-            );
+            dgvDanhSachSachMuon.Rows.Add(txtMaSach.Text, txtTenSach.Text, nudSoLuong.Value);
 
             txtMaSach.Clear();
             txtTenSach.Clear();
-
             nudSoLuong.Value = 0;
-
         }
 
-        //Xóa sách khỏi danh sách mượn
+        // Xóa sách khỏi danh sách mượn
         private void btnXoaSachMuon_Click(object sender, EventArgs e)
         {
             if (dgvDanhSachSachMuon.CurrentRow != null)
@@ -203,12 +166,12 @@ namespace Bài_Tập_lớn_Window.UserControls
             }
         }
 
-        //Quang
         private void btnHuyPhieu_Click(object sender, EventArgs e)
         {
             ClearForm();
         }
 
+        // Lập phiếu mượn
         private void btnLapPhieuMuon_Click(object sender, EventArgs e)
         {
             if (txtMaDG.Text.Trim() == "")
@@ -217,7 +180,7 @@ namespace Bài_Tập_lớn_Window.UserControls
                 return;
             }
 
-            if (dgvDanhSachSachMuon.Rows.Count == 0)
+            if (dgvDanhSachSachMuon.Rows.Count == 0 || (dgvDanhSachSachMuon.Rows.Count == 1 && dgvDanhSachSachMuon.Rows[0].IsNewRow))
             {
                 MessageBox.Show("Chưa có sách mượn!");
                 return;
@@ -225,69 +188,59 @@ namespace Bài_Tập_lớn_Window.UserControls
 
             try
             {
-                conn = new SqlConnection(chuoiKetNoi);
-
-                conn.Open();
-
-                string sqlPM = @"INSERT INTO PhieuMuon
-                VALUES(@mapm,@madg,@ngaymuon,@ngaytra)";
-
-                SqlCommand cmdPM = new SqlCommand(sqlPM, conn);
-
-                cmdPM.Parameters.AddWithValue("@mapm", txtMaPhieuMuon.Text);
-                cmdPM.Parameters.AddWithValue("@madg", txtMaDG.Text);
-                cmdPM.Parameters.AddWithValue("@ngaymuon", dtpNgayMuon.Value);
-                cmdPM.Parameters.AddWithValue("@ngaytra", dtpNgayTra.Value);
-
-                cmdPM.ExecuteNonQuery();
-
-                foreach (DataGridViewRow row in dgvDanhSachSachMuon.Rows)
+                using (SqlConnection conn = new SqlConnection(chuoiKetNoi))
                 {
-                    if (row.Cells[0].Value != null)
+                    conn.Open();
+
+                    // 1. Thêm vào bảng Phiếu Mượn (Đã sửa lỗi chỉ định rõ cột)
+                    string sqlPM = @"INSERT INTO PhieuMuon (MaPhieuMuon, MaDG, NgayMuon, NgayTra) 
+                                     VALUES(@mapm, @madg, @ngaymuon, @ngaytra)";
+                    SqlCommand cmdPM = new SqlCommand(sqlPM, conn);
+                    cmdPM.Parameters.AddWithValue("@mapm", txtMaPhieuMuon.Text);
+                    cmdPM.Parameters.AddWithValue("@madg", txtMaDG.Text);
+                    cmdPM.Parameters.AddWithValue("@ngaymuon", dtpNgayMuon.Value.Date);
+                    cmdPM.Parameters.AddWithValue("@ngaytra", dtpNgayTra.Value.Date);
+
+                    cmdPM.ExecuteNonQuery();
+
+                    // 2. Thêm Chi Tiết Phiếu Mượn và Cập nhật Số Lượng Sách
+                    foreach (DataGridViewRow row in dgvDanhSachSachMuon.Rows)
                     {
-                        string sqlCT = @"INSERT INTO ChiTietPhieuMuon
-                        VALUES(@mapm,@masach,@soluong)";
+                        if (row.Cells[0].Value != null)
+                        {
+                            // Thêm chi tiết
+                            string sqlCT = @"INSERT INTO ChiTietPhieuMuon (MaPhieuMuon, MaSach, SoLuong) 
+                                             VALUES(@mapm, @masach, @soluong)";
+                            SqlCommand cmdCT = new SqlCommand(sqlCT, conn);
+                            cmdCT.Parameters.AddWithValue("@mapm", txtMaPhieuMuon.Text);
+                            cmdCT.Parameters.AddWithValue("@masach", row.Cells[0].Value.ToString());
+                            cmdCT.Parameters.AddWithValue("@soluong", row.Cells[2].Value);
+                            cmdCT.ExecuteNonQuery();
 
-                        SqlCommand cmdCT = new SqlCommand(sqlCT, conn);
-
-                        cmdCT.Parameters.AddWithValue("@mapm", txtMaPhieuMuon.Text);
-                        cmdCT.Parameters.AddWithValue("@masach", row.Cells[0].Value.ToString());
-                        cmdCT.Parameters.AddWithValue("@soluong", row.Cells[2].Value);
-
-                        cmdCT.ExecuteNonQuery();
-
-                        string sqlUpdate = @"UPDATE Sach
-                        SET SoLuong = SoLuong - @sl
-                        WHERE MaSach = @masach";
-
-                        SqlCommand cmdUpdate = new SqlCommand(sqlUpdate, conn);
-
-                        cmdUpdate.Parameters.AddWithValue("@sl", row.Cells[2].Value);
-                        cmdUpdate.Parameters.AddWithValue("@masach", row.Cells[0].Value.ToString());
-
-                        cmdUpdate.ExecuteNonQuery();
+                            // Trừ số lượng sách trong kho
+                            string sqlUpdate = @"UPDATE Sach SET SoLuong = SoLuong - @sl WHERE MaSach = @masach";
+                            SqlCommand cmdUpdate = new SqlCommand(sqlUpdate, conn);
+                            cmdUpdate.Parameters.AddWithValue("@sl", row.Cells[2].Value);
+                            cmdUpdate.Parameters.AddWithValue("@masach", row.Cells[0].Value.ToString());
+                            cmdUpdate.ExecuteNonQuery();
+                        }
                     }
                 }
 
-                conn.Close();
-
-                MessageBox.Show("Lập phiếu thành công!");
+                MessageBox.Show("Lập phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 dgvDanhSachSachMuon.Rows.Clear();
-
                 txtMaDG.Clear();
                 txtTenDocGia.Clear();
-
                 SinhMaPhieuMuon();
-
                 LoadSach();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi khi lập phiếu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // Quang
+
         private void ClearForm()
         {
             txtMaDG.Clear();
@@ -298,9 +251,8 @@ namespace Bài_Tập_lớn_Window.UserControls
             dtpNgayMuon.Value = DateTime.Now;
             dtpNgayTra.Value = DateTime.Now.AddDays(7);
             dgvDanhSachSachMuon.Rows.Clear();
-            SinhMaPhieuMuon(); // Sinh mã phiếu mới
+            SinhMaPhieuMuon();
             txtMaDG.Focus();
         }
-
     }
 }
