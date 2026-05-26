@@ -141,6 +141,31 @@ namespace Bài_Tập_lớn_Window.UserControls
                 return;
             }
 
+            // Kiểm tra số lượng sách hiện có trong kho trước khi thêm
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(chuoiKetNoi))
+                {
+                    conn.Open();
+                    string sqlCheck = "SELECT ISNULL(SoLuong,0) FROM Sach WHERE MaSach = @ma";
+                    SqlCommand cmdCheck = new SqlCommand(sqlCheck, conn);
+                    cmdCheck.Parameters.AddWithValue("@ma", txtMaSach.Text.Trim());
+                    object obj = cmdCheck.ExecuteScalar();
+                    int soLuongHienCo = obj != null ? Convert.ToInt32(obj) : 0;
+
+                    if (nudSoLuong.Value > soLuongHienCo)
+                    {
+                        MessageBox.Show($"Số lượng mượn không được lớn hơn số sách hiện có ({soLuongHienCo})!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi kiểm tra số lượng sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             foreach (DataGridViewRow row in dgvDanhSachSachMuon.Rows)
             {
                 if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == txtMaSach.Text)
@@ -192,7 +217,26 @@ namespace Bài_Tập_lớn_Window.UserControls
                 {
                     conn.Open();
 
-                    // 1. Thêm vào bảng Phiếu Mượn (Đã sửa lỗi chỉ định rõ cột)
+                    // Trước khi thêm, kiểm tra lại toàn bộ số lượng để tránh tranh chấp
+                    foreach (DataGridViewRow row in dgvDanhSachSachMuon.Rows)
+                    {
+                        if (row.Cells[0].Value == null) continue;
+                        string maSach = row.Cells[0].Value.ToString();
+                        int soLuongMuon = Convert.ToInt32(row.Cells[2].Value);
+
+                        string sqlCheck = "SELECT ISNULL(SoLuong,0) FROM Sach WHERE MaSach = @ma";
+                        SqlCommand cmdCheck = new SqlCommand(sqlCheck, conn);
+                        cmdCheck.Parameters.AddWithValue("@ma", maSach);
+                        int soLuongHienCo = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                        if (soLuongMuon > soLuongHienCo)
+                        {
+                            MessageBox.Show($"Sách (" + maSach + ") không đủ số lượng. Hiện có: {soLuongHienCo}", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+
+                    // 1. Thêm vào bảng Phiếu Mượn
                     string sqlPM = @"INSERT INTO PhieuMuon (MaPhieuMuon, MaDG, NgayMuon, NgayTra) 
                                      VALUES(@mapm, @madg, @ngaymuon, @ngaytra)";
                     SqlCommand cmdPM = new SqlCommand(sqlPM, conn);
@@ -208,20 +252,23 @@ namespace Bài_Tập_lớn_Window.UserControls
                     {
                         if (row.Cells[0].Value != null)
                         {
+                            string maSach = row.Cells[0].Value.ToString();
+                            int soLuong = Convert.ToInt32(row.Cells[2].Value);
+
                             // Thêm chi tiết
                             string sqlCT = @"INSERT INTO ChiTietPhieuMuon (MaPhieuMuon, MaSach, SoLuong) 
                                              VALUES(@mapm, @masach, @soluong)";
                             SqlCommand cmdCT = new SqlCommand(sqlCT, conn);
                             cmdCT.Parameters.AddWithValue("@mapm", txtMaPhieuMuon.Text);
-                            cmdCT.Parameters.AddWithValue("@masach", row.Cells[0].Value.ToString());
-                            cmdCT.Parameters.AddWithValue("@soluong", row.Cells[2].Value);
+                            cmdCT.Parameters.AddWithValue("@masach", maSach);
+                            cmdCT.Parameters.AddWithValue("@soluong", soLuong);
                             cmdCT.ExecuteNonQuery();
 
                             // Trừ số lượng sách trong kho
                             string sqlUpdate = @"UPDATE Sach SET SoLuong = SoLuong - @sl WHERE MaSach = @masach";
                             SqlCommand cmdUpdate = new SqlCommand(sqlUpdate, conn);
-                            cmdUpdate.Parameters.AddWithValue("@sl", row.Cells[2].Value);
-                            cmdUpdate.Parameters.AddWithValue("@masach", row.Cells[0].Value.ToString());
+                            cmdUpdate.Parameters.AddWithValue("@sl", soLuong);
+                            cmdUpdate.Parameters.AddWithValue("@masach", maSach);
                             cmdUpdate.ExecuteNonQuery();
                         }
                     }

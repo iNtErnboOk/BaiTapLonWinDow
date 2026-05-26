@@ -38,7 +38,8 @@ namespace Bài_Tập_lớn_Window.UserControls
             {
                 using (SqlConnection conn = new SqlConnection(chuoiKetNoi))
                 {
-                    string query = @"SELECT pm.MaPhieuMuon, pm.MaDG, dg.TenDocGia, pm.NgayMuon, pm.NgayTra 
+                    // Lưu ý: đặt alias TenDG để khớp với DataPropertyName của cột colTenDG trong Designer
+                    string query = @"SELECT pm.MaPhieuMuon, pm.MaDG, dg.TenDocGia AS TenDG, pm.NgayMuon, pm.NgayTra 
                                      FROM PhieuMuon pm 
                                      JOIN DocGia dg ON pm.MaDG = dg.MaDG 
                                      WHERE pm.TrangThaiTra = N'Chưa trả'";
@@ -144,6 +145,8 @@ namespace Bài_Tập_lớn_Window.UserControls
                     {
                         MessageBox.Show("Gia hạn sách thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadDataDanhSachPhieuMuon(); // Cập nhật lại GridView
+                        // Thông báo cho các control khác (ví dụ trang Trả sách) biết dữ liệu PhieuMuon đã thay đổi
+                        Bài_Tập_lớn_Window.Common.EventBus.RaisePhieuMuonChanged();
                         ClearForm();
                     }
                 }
@@ -174,6 +177,11 @@ namespace Bài_Tập_lớn_Window.UserControls
             dtpNgayMuon.Value = DateTime.Now;
             dtpNgayTra.Value = DateTime.Now;
             dtpGiaHanTra.Value = DateTime.Now;
+        }
+
+        private void dgvDanhSachPhieuMuon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

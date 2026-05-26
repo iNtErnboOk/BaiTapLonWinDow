@@ -102,3 +102,4 @@ D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.csp
 D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.exe
 D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài Tập lớn Window.pdb
 D:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_ThongKe.resources
+E:\BaiTapLonWinDow\Bài Tập lớn Window\obj\Debug\Bài_Tập_lớn_Window.UserControls.UC_ThongKe.resources

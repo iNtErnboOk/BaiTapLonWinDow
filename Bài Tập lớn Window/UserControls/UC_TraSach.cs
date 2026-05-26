@@ -18,6 +18,8 @@ namespace Bài_Tập_lớn_Window.UserControls
         public UC_TraSach()
         {
             InitializeComponent();
+            // đảm bảo sự kiện thay đổi ngày trả thực tế được xử lý để tính tiền phạt
+            this.dtpNgayTraThucTe.ValueChanged += dtpNgayTraThucTe_ValueChanged;
         }
 
         private void UC_TraSach_Load(object sender, EventArgs e)
@@ -25,6 +27,26 @@ namespace Bài_Tập_lớn_Window.UserControls
             LoadDataDanhSachChuaTra();
             LoadDataDanhSachDaTra();
             ClearForm();
+            // Đăng ký lắng nghe khi có thay đổi ở bảng PhieuMuon (ví dụ: gia hạn)
+            Bài_Tập_lớn_Window.Common.EventBus.PhieuMuonChanged += EventBus_PhieuMuonChanged;
+        }
+
+        private void EventBus_PhieuMuonChanged()
+        {
+            // Làm mới dữ liệu hiển thị
+            try
+            {
+                if (this.InvokeRequired)
+                {
+                    this.BeginInvoke((Action)(() => { LoadDataDanhSachChuaTra(); LoadDataDanhSachDaTra(); }));
+                }
+                else
+                {
+                    LoadDataDanhSachChuaTra();
+                    LoadDataDanhSachDaTra();
+                }
+            }
+            catch { }
         }
 
         private void LoadDataDanhSachChuaTra()
@@ -57,7 +79,8 @@ namespace Bài_Tập_lớn_Window.UserControls
             {
                 using (SqlConnection conn = new SqlConnection(chuoiKetNoi))
                 {
-                    string query = @"SELECT pm.MaPhieuMuon, pm.MaDG, dg.TenDocGia, pm.NgayTraThucTe, pm.TrangThaiTra, pm.TienPhat 
+                    // Alias TenDocGia as TenDG to match DataGridView column DataPropertyName
+                    string query = @"SELECT pm.MaPhieuMuon, pm.MaDG, dg.TenDocGia AS TenDG, pm.NgayTraThucTe, pm.TrangThaiTra, pm.TienPhat 
                                      FROM PhieuMuon pm 
                                      JOIN DocGia dg ON pm.MaDG = dg.MaDG 
                                      WHERE pm.TrangThaiTra = N'Đã trả'";
@@ -169,6 +192,9 @@ namespace Bài_Tập_lớn_Window.UserControls
             {
                 using (SqlConnection conn = new SqlConnection(chuoiKetNoi))
                 {
+                    conn.Open();
+
+                    // Cập nhật trạng thái phiếu trả
                     string query = @"UPDATE PhieuMuon 
                                      SET TrangThaiTra = N'Đã trả', 
                                          NgayTraThucTe = @NgayTraThucTe, 
@@ -177,11 +203,38 @@ namespace Bài_Tập_lớn_Window.UserControls
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@NgayTraThucTe", dtpNgayTraThucTe.Value.Date);
-                    cmd.Parameters.AddWithValue("@TienPhat", int.Parse(txtTienPhat.Text));
+                    int tienPhat = 0;
+                    if (!int.TryParse(txtTienPhat.Text, out tienPhat)) tienPhat = 0;
+                    cmd.Parameters.AddWithValue("@TienPhat", tienPhat);
                     cmd.Parameters.AddWithValue("@MaPM", txtMaPhieuMuon.Text);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
+
+                    // Khi trả sách: tăng lại số lượng sách trong bảng Sach dựa vào ChiTietPhieuMuon
+                    string sqlCT = "SELECT MaSach, SoLuong FROM ChiTietPhieuMuon WHERE MaPhieuMuon = @MaPM";
+                    SqlCommand cmdCT = new SqlCommand(sqlCT, conn);
+                    cmdCT.Parameters.AddWithValue("@MaPM", txtMaPhieuMuon.Text);
+                    using (SqlDataReader dr = cmdCT.ExecuteReader())
+                    {
+                        // Thu thập chi tiết trả trước khi cập nhật (để tránh giữ reader mở khi cập nhật)
+                        var list = new System.Collections.Generic.List<Tuple<string, int>>();
+                        while (dr.Read())
+                        {
+                            string maSach = dr["MaSach"].ToString();
+                            int sl = Convert.ToInt32(dr["SoLuong"]);
+                            list.Add(Tuple.Create(maSach, sl));
+                        }
+                        dr.Close();
+
+                        foreach (var item in list)
+                        {
+                            string sqlUpdate = "UPDATE Sach SET SoLuong = SoLuong + @sl WHERE MaSach = @ma";
+                            SqlCommand cmdUpdate = new SqlCommand(sqlUpdate, conn);
+                            cmdUpdate.Parameters.AddWithValue("@sl", item.Item2);
+                            cmdUpdate.Parameters.AddWithValue("@ma", item.Item1);
+                            cmdUpdate.ExecuteNonQuery();
+                        }
+                    }
 
                     MessageBox.Show("Lưu phiếu trả thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

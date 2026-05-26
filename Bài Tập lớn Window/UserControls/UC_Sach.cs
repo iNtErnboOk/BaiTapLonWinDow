@@ -112,6 +112,7 @@ namespace Bài_Tập_lớn_Window.UserControls
                     MessageBox.Show("Lỗi kết nối CSDL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
 
         // Gọi hàm này trong sự kiện Load của UserControl
@@ -119,6 +120,9 @@ namespace Bài_Tập_lớn_Window.UserControls
         {
             LoadData();
             ClearForm();
+            cboLocTheLoai.SelectedIndex = 0; // Đặt mặc định là "Tất cả thể loại"
+            cboLocTrangThai.SelectedIndex = 0; // Đặt mặc định là "Tất cả trạng thái"
+            cboTheLoai.SelectedIndex = 0; // Đặt mặc định là "Tất cả thể loại"
         }
 
         // Hàm xóa trắng các ô nhập liệu
@@ -481,7 +485,7 @@ namespace Bài_Tập_lớn_Window.UserControls
             DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa trắng form nhập?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                txtMaSach.Text = "";
+                
                 txtTenSach.Text = "";
                 txtTacGia.Text = "";
                 cboTheLoai.SelectedIndex = -1;

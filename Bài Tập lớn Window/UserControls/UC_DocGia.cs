@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -14,6 +15,49 @@ namespace Bài_Tập_lớn_Window.UserControls
         {
             InitializeComponent();
             HienThiDuLieu();
+            SinhMaDocGia();
+        }
+
+        private void SinhMaDocGia()
+        {
+            try
+            {
+                using (SqlConnection c = new SqlConnection(chuoiKetNoi))
+                {
+                    c.Open();
+                    string sql = "SELECT TOP 1 MaDG FROM DocGia ORDER BY MaDG DESC";
+                    SqlCommand cmd = new SqlCommand(sql, c);
+                    object result = cmd.ExecuteScalar();
+
+                    string maMoi = "DG001";
+                    if (result != null && result != DBNull.Value)
+                    {
+                        string last = result.ToString();
+                        // Lấy phần số cuối cùng của mã
+                        Match m = Regex.Match(last, "(\\d+)$");
+                        if (m.Success)
+                        {
+                            int so = int.Parse(m.Value);
+                            so++;
+                            // Giữ số chữ số bằng nhau (ví dụ D G 003)
+                            maMoi = last.Substring(0, last.Length - m.Value.Length) + so.ToString(new string('0', m.Value.Length));
+                        }
+                        else
+                        {
+                            // Nếu không có số, thêm hậu tố 001
+                            maMoi = last + "001";
+                        }
+                    }
+
+                    txtMaDocGia.Text = maMoi;
+                    txtMaDocGia.ReadOnly = true;
+                }
+            }
+            catch
+            {
+                txtMaDocGia.Text = "DG001";
+                txtMaDocGia.ReadOnly = true;
+            }
         }
 
         private void HienThiDuLieu()
@@ -170,7 +214,8 @@ namespace Bài_Tập_lớn_Window.UserControls
             txtDiaChi.Text = "";
             dtpNamSinh.Value = DateTime.Now;
             radNam.Checked = true;
-            txtMaDocGia.ReadOnly = false;
+            // Sinh mã mới và khóa trường mã để người dùng không sửa
+            SinhMaDocGia();
             txtMaDocGia.Focus();
         }
         private void btnXoaTrang_Click(object sender, EventArgs e)
