@@ -162,6 +162,7 @@ namespace Bài_Tập_lớn_Window.UserControls
             }
         }
 
+        //Quang
         private void btnHuyPhieu_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -179,6 +180,7 @@ namespace Bài_Tập_lớn_Window.UserControls
             cbTrangThai.SelectedIndex = -1;
             txtTienPhat.Clear();
         }
+        //
 
         private void btnLuuPhieuTra_Click(object sender, EventArgs e)
         {

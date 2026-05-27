@@ -156,7 +156,7 @@ namespace Bài_Tập_lớn_Window.UserControls
                 MessageBox.Show("Lỗi khi gia hạn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Quang
         private void btnHuyGiaHan_Click(object sender, EventArgs e)
         {
             ClearForm();
