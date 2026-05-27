@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Bài_Tập_lớn_Window.UserControls
 {
     public partial class UC_ThongKe : UserControl
-    {
+    {   
         private string connectionString = @"Data Source=.;Initial Catalog=QuanLyThuVien;Integrated Security=True";
 
         private string[] cotLocTheoLoai = { "TheLoai", "GioiTinh", "TenDocGia" };
@@ -21,30 +21,31 @@ namespace Bài_Tập_lớn_Window.UserControls
 
         private void UC_ThongKe_Load(object sender, EventArgs e)
         {
+            if (cboLoaiThongKe.Items.Count > 0)
+            {
+                cboLoaiThongKe.SelectedIndex = 0;
+            }
             LoadTongQuan();
             LoadDataGrid("SELECT MaSach, TenSach, TacGia, TheLoai, NamXB, SoLuong, TrangThai FROM Sach");
         }
 
         private void LoadTongQuan()
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                lblTongSach.Text = new SqlCommand("SELECT COUNT(*) FROM Sach", conn).ExecuteScalar().ToString();
-                lblDangMuon.Text = new SqlCommand("SELECT COUNT(*) FROM PhieuMuon", conn).ExecuteScalar().ToString();
-                lblDocGiaMuon.Text = new SqlCommand("SELECT COUNT(*) FROM DocGia", conn).ExecuteScalar().ToString();
-            }
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            lblTongSach.Text = new SqlCommand("SELECT COUNT(*) FROM Sach", conn).ExecuteScalar().ToString();
+            lblDangMuon.Text = new SqlCommand("SELECT COUNT(*) FROM PhieuMuon", conn).ExecuteScalar().ToString();
+            lblDocGiaMuon.Text = new SqlCommand("SELECT COUNT(*) FROM DocGia", conn).ExecuteScalar().ToString();
+            conn.Close();
         }
 
         private void LoadDataGrid(string query)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dgvThongKe.DataSource = dt;
-            }
+            SqlConnection conn = new SqlConnection(connectionString);
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgvThongKe.DataSource = dt;
 
             DiemCboLocTheLoai();
             txtTimKiem.Clear();
@@ -57,8 +58,7 @@ namespace Bài_Tập_lớn_Window.UserControls
             cboLocTheLoai.Items.Add("-- Tất cả --");
 
             int idx = cboLoaiThongKe.SelectedIndex;
-            string cotLoc = (idx >= 0 && idx < cotLocTheoLoai.Length && dgvThongKe.Columns.Contains(cotLocTheoLoai[idx]))
-                            ? cotLocTheoLoai[idx] : "";
+            string cotLoc = cotLocTheoLoai[idx];
 
             if (!string.IsNullOrEmpty(cotLoc))
                 foreach (DataGridViewRow row in dgvThongKe.Rows)
@@ -76,22 +76,40 @@ namespace Bài_Tập_lớn_Window.UserControls
             string keyword = txtTimKiem.Text.ToLower().Trim();
             string giaTriLoc = cboLocTheLoai.SelectedItem?.ToString();
             int idx = cboLoaiThongKe.SelectedIndex;
-            string cotLoc = (idx >= 0 && idx < cotLocTheoLoai.Length) ? cotLocTheoLoai[idx] : "";
+            string cotLoc = cotLocTheoLoai[idx];
 
             dgvThongKe.CurrentCell = null;
 
             foreach (DataGridViewRow row in dgvThongKe.Rows)
             {
-                bool khopTuKhoa = string.IsNullOrEmpty(keyword) ||
-                    row.Cells.Cast<DataGridViewCell>()
-                       .Any(c => c.Value?.ToString().ToLower().Contains(keyword) == true);
+                bool khopTuKhoa = true;
+                bool khopLoc = true;
 
-                bool khopLoc = giaTriLoc == "-- Tất cả --" ||
-                    !dgvThongKe.Columns.Contains(cotLoc) ||
-                    row.Cells[cotLoc].Value?.ToString() == giaTriLoc;
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    khopTuKhoa = false;
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Value != null && cell.Value.ToString().ToLower().Contains(keyword))
+                        {
+                            khopTuKhoa = true;
+                            break;
+                        }
+                    }
+                }
+                if (giaTriLoc != "-- Tất cả --" && dgvThongKe.Columns.Contains(cotLoc))
+                {
+                    string giaTriDong = row.Cells[cotLoc].Value?.ToString();
+                    khopLoc = (giaTriDong == giaTriLoc);
+                }
 
-                try { row.Visible = khopTuKhoa && khopLoc; }
-                catch { }
+                try
+                {
+                    row.Visible = khopTuKhoa && khopLoc;
+                }
+                catch
+                {
+                }
             }
 
             CapNhatLblTong();
@@ -99,7 +117,15 @@ namespace Bài_Tập_lớn_Window.UserControls
 
         private void CapNhatLblTong()
         {
-            int dem = dgvThongKe.Rows.Cast<DataGridViewRow>().Count(r => r.Visible && !r.IsNewRow);
+            int dem = 0;
+
+            foreach (DataGridViewRow row in dgvThongKe.Rows)
+            {
+                if (row.Visible)
+                {
+                    dem++;
+                }
+            }
             lblTong.Text = $"Tổng hiển thị: {dem} bản ghi";
         }
 
@@ -109,20 +135,30 @@ namespace Bài_Tập_lớn_Window.UserControls
 
         private void btnXemThongKe_Click(object sender, EventArgs e)
         {
-            string[] queries = {
-                "SELECT MaSach, TenSach, TacGia, TheLoai, NamXB, SoLuong, TrangThai FROM Sach",
-                "SELECT MaDG, TenDocGia, SDT, Email, DiaChi, NamSinh, GioiTinh FROM DocGia",
-                @"SELECT p.MaPhieuMuon, d.TenDocGia, s.TenSach, p.NgayMuon, p.NgayTra, ct.SoLuong
-                  FROM PhieuMuon p
-                  JOIN DocGia d ON p.MaDG = d.MaDG
-                  JOIN ChiTietPhieuMuon ct ON p.MaPhieuMuon = ct.MaPhieuMuon
-                  JOIN Sach s ON ct.MaSach = s.MaSach
-                  ORDER BY p.NgayMuon DESC"
-            };
+            string query = "";
 
-            int idx = cboLoaiThongKe.SelectedIndex;
-            if (idx >= 0 && idx < queries.Length)
-                LoadDataGrid(queries[idx]);
+            switch (cboLoaiThongKe.SelectedIndex)
+            {
+                case 0:
+                    query = "SELECT MaSach, TenSach, TacGia, TheLoai, NamXB, SoLuong, TrangThai FROM Sach";
+                    break;
+                case 1:
+                    query = "SELECT MaDG, TenDocGia, SDT, Email, DiaChi, NamSinh, GioiTinh FROM DocGia";
+                    break;
+                case 2:
+                    query = @"SELECT p.MaPhieuMuon, d.TenDocGia, s.TenSach, p.NgayMuon, p.NgayTra, ct.SoLuong
+                      FROM PhieuMuon p
+                      JOIN DocGia d ON p.MaDG = d.MaDG
+                      JOIN ChiTietPhieuMuon ct ON p.MaPhieuMuon = ct.MaPhieuMuon
+                      JOIN Sach s ON ct.MaSach = s.MaSach
+                      ORDER BY p.NgayMuon DESC";
+                    break;
+            }
+
+            if (!string.IsNullOrEmpty(query))
+            {
+                LoadDataGrid(query);
+            }
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -138,28 +174,42 @@ namespace Bài_Tập_lớn_Window.UserControls
                 MessageBox.Show("Không có dữ liệu để xuất!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            using (SaveFileDialog sfd = new SaveFileDialog())
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "CSV file (*.csv)|*.csv";
+            sfd.FileName = "BaoCaoThongKe_" + DateTime.Now.ToString("yyyyMMdd_HHmm");
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
-                sfd.Filter = "CSV file (*.csv)|*.csv";
-                sfd.FileName = "BaoCaoThongKe_" + DateTime.Now.ToString("yyyyMMdd_HHmm");
-                if (sfd.ShowDialog() != DialogResult.OK) return;
-
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine("BÁO CÁO THỐNG KÊ THƯ VIỆN");
-                sb.AppendLine("Ngày xuất: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
-                sb.AppendLine("Loại: " + cboLoaiThongKe.Text);
-                sb.AppendLine("========================================");
-                sb.AppendLine(string.Join(",", dgvThongKe.Columns.Cast<DataGridViewColumn>().Select(c => c.HeaderText)));
-
+                StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8);
+                sw.WriteLine("BÁO CÁO THỐNG KÊ THƯ VIỆN");
+                sw.WriteLine("Ngày xuất: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
+                sw.WriteLine("Loại: " + cboLoaiThongKe.Text);
+                sw.WriteLine("========================================");
+                string dongTieuDe = "";
+                foreach (DataGridViewColumn col in dgvThongKe.Columns)
+                {
+                    dongTieuDe += col.HeaderText + ",";
+                }
+                dongTieuDe = dongTieuDe.TrimEnd(',');
+                sw.WriteLine(dongTieuDe);
                 foreach (DataGridViewRow row in dgvThongKe.Rows)
                 {
-                    if (row.IsNewRow || !row.Visible) continue;
-                    sb.AppendLine(string.Join(",", row.Cells.Cast<DataGridViewCell>()
-                        .Select(c => $"\"{c.Value?.ToString() ?? ""}\"")));
+                    if (row.Visible == true)
+                    {
+                        string dongDuLieu = "";
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            string giaTri = "";
+                            if (cell.Value != null)
+                            {
+                                giaTri = cell.Value.ToString();
+                            }
+                            dongDuLieu += "\"" + giaTri + "\",";
+                        }
+                        dongDuLieu = dongDuLieu.TrimEnd(',');
+                        sw.WriteLine(dongDuLieu);
+                    }
                 }
-
-                File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
+                sw.Close();
                 MessageBox.Show("Xuất thành công!\nFile: " + sfd.FileName, "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
